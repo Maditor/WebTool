@@ -489,7 +489,7 @@
         } else {
           it.drawW = it.srcW;
           it.drawH = it.srcH;
-          it.offsetX = 0;
+          it.offsetX = Math.floor((canvasWidth - it.srcW) / 2);
         }
         it.start = cursor;
         it.end = cursor + it.drawH;

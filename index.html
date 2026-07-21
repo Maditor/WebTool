@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>WebTool - Maditor</title>
+<title>Webtoon Studio — Cắt & Ghép Ảnh, Đổi Tên, Gắn Logo</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -72,7 +72,7 @@
       <div class="field">
         <label>Kiểu Ép Chiều Rộng</label>
         <select id="widthMode">
-          <option value="none" selected>Không ép (giữ nguyên, canh trái)</option>
+          <option value="none" selected>Không ép (giữ nguyên, canh giữa)</option>
           <option value="scale">Co giãn theo ảnh đầu tiên</option>
           <option value="pad">Đệm nền trắng theo ảnh rộng nhất</option>
         </select>
@@ -84,11 +84,11 @@
       <div class="row">
         <div class="field">
           <label>Vùng Dò Ban Đầu Quanh Mốc Cắt (px)</label>
-          <input type="number" id="searchWindow" min="30" step="10" value="5000">
+          <input type="number" id="searchWindow" min="30" step="10" value="1000">
         </div>
         <div class="field">
           <label>Ngưỡng Nhạy Màu (0-40)</label>
-          <input type="number" id="sensitivity" min="0" max="60" step="1" value="2">
+          <input type="number" id="sensitivity" min="0" max="60" step="1" value="5">
         </div>
       </div>
     </div>
