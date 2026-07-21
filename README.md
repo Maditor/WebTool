@@ -4,16 +4,13 @@ Công cụ xử lý ảnh chạy hoàn toàn phía client (không cần server),
 
 Chạy được ở 2 dạng:
 - **Trên trình duyệt**: mở thẳng file `index.html`, không cần cài gì thêm.
-- **Đóng gói bằng Tauri**: chạy như app desktop, thao tác trực tiếp với thư mục trên máy.
+- **Portable**: chạy như app desktop, thao tác trực tiếp với thư mục trên máy.
 
 ## Cài đặt / Chạy
 
-**Cách 1 — Chạy trên trình duyệt (nhanh nhất):**
-1. Tải file `index.html` về máy.
+1. Tải file `index.html hoặc Webtool.exe` về máy.
 2. Mở bằng Chrome hoặc Edge (khuyến khích, vì hỗ trợ chọn/ghi thư mục trực tiếp).
 
-**Cách 2 — Đóng gói thành app Tauri:**
-Đưa `index.html` vào làm giao diện cho project Tauri rồi build theo hướng dẫn của Tauri. Khi chạy dưới dạng app, tool sẽ dùng thẳng hệ thống file thật (đọc/ghi trực tiếp vào thư mục, không cần tải file .zip).
 
 ## Các chức năng
 
@@ -34,7 +31,7 @@ Chèn 1 logo/watermark lên toàn bộ ảnh trong thư mục, tùy chỉnh kíc
 
 ## Chọn thư mục vào / ra
 
-- **Chạy dưới Tauri**: chọn thẳng thư mục thật trên máy, kết quả ghi trực tiếp vào thư mục xuất (hoặc thư mục con tự tạo, tùy chức năng).
+- **Portable**: chọn thẳng thư mục thật trên máy, kết quả ghi trực tiếp vào thư mục xuất (hoặc thư mục con tự tạo, tùy chức năng).
 - **Chạy trên trình duyệt hỗ trợ File System Access API** (Chrome/Edge): có thể chọn thư mục xuất và ghi trực tiếp, không cần tải về.
 - **Trình duyệt không hỗ trợ**: kết quả sẽ được đóng gói và tải về dưới dạng file `.zip`.
 
@@ -42,7 +39,7 @@ Chèn 1 logo/watermark lên toàn bộ ảnh trong thư mục, tùy chỉnh kíc
 
 Mọi thông số bạn chỉnh (định dạng, chất lượng, chế độ cắt, cài đặt đổi tên, cài đặt logo...) và đường dẫn thư mục đều được tự động lưu lại:
 
-- **Bản Tauri**: lưu vào file JSON trong thư mục dữ liệu ứng dụng, kèm tự động nạp lại danh sách ảnh của thư mục đã chọn lần trước.
+- **Portable**: lưu vào file JSON trong thư mục dữ liệu ứng dụng, kèm tự động nạp lại danh sách ảnh của thư mục đã chọn lần trước.
 - **Bản web**: lưu vào `localStorage` của trình duyệt. Do giới hạn bảo mật, trình duyệt không lưu được quyền truy cập thư mục — bạn cần bấm "Duyệt" chọn lại thư mục ảnh mỗi khi mở lại, các thông số khác vẫn được giữ nguyên.
 
 ## Yêu cầu
