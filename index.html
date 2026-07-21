@@ -29,150 +29,151 @@
     min-height:100vh;
   }
 
-  .toolbar{
-    display:flex;
-    align-items:center;
-    gap:2px;
-    padding:0 14px;
-    height:52px;
-    background:linear-gradient(180deg,#1a1c23,#161820);
-    border-bottom:1px solid var(--line);
-    position:sticky; top:0; z-index:20;
-  }
-  .brand{
-    display:flex; align-items:center; gap:9px;
-    padding-right:16px; margin-right:8px;
-    border-right:1px solid var(--line);
-    height:32px;
-  }
-  .brand .mark{
-    width:20px;height:20px;border-radius:5px;
-    background:linear-gradient(135deg,var(--accent),#c9781f);
-    display:flex;align-items:center;justify-content:center;
-    font-size:12px;font-weight:800;color:#1a1206;
-  }
-  .brand .name{font-size:13.5px;font-weight:700;letter-spacing:.2px;color:var(--text);}
-  .brand .name b{color:var(--accent);font-weight:800;}
+  .wrap{max-width:400px;margin:0 auto;padding:10px 9px 24px;}
 
-  .tool-tabs{display:flex;align-items:center;gap:2px;height:100%;overflow-x:auto;}
+  /* Khung nhóm: nút chuyển chức năng + khung cài đặt của chức năng đó,
+     bọc chung 1 viền để trông như 1 khối liền mạch */
+  .module-frame{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:8px;
+    margin-bottom:8px;
+    overflow:hidden;
+  }
+  .module-tabs{
+    display:flex; align-items:center; gap:1px;
+    overflow-x:auto;
+    background:var(--panel-2);
+    border-bottom:1px solid var(--line);
+  }
   .tool-tab{
-    display:flex;align-items:center;gap:7px;
-    height:100%;
-    padding:0 14px;
-    font-size:12.5px;
+    display:flex;align-items:center;gap:4px;
+    padding:6px 8px;
+    font-size:10px;
     color:var(--text-dim);
     border-bottom:2px solid transparent;
     cursor:pointer;
     white-space:nowrap;
     user-select:none;
-    transition:color .15s ease;
+    transition:color .15s ease, background .15s ease;
   }
-  .tool-tab .dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.5;}
-  .tool-tab:hover{color:var(--text);}
-  .tool-tab.active{color:var(--text);border-bottom-color:var(--accent);}
+  .tool-tab .dot{width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.5;flex:none;}
+  .tool-tab:hover{color:var(--text);background:#262a35;}
+  .tool-tab.active{color:var(--text);border-bottom-color:var(--accent);background:var(--panel);}
   .tool-tab.active .dot{background:var(--accent);opacity:1;}
   .tool-tab.disabled{color:#565a68;cursor:not-allowed;}
+  .tool-tab.disabled:hover{background:transparent;}
   .tool-tab .soon{
-    font-size:9px; padding:1px 6px; border-radius:100px;
-    border:1px solid #3a3e4c; color:#7d8296; letter-spacing:.4px;
+    font-size:7px; padding:1px 4px; border-radius:100px;
+    border:1px solid #3a3e4c; color:#7d8296; letter-spacing:.2px;
   }
-
-  .wrap{max-width:920px;margin:0 auto;padding:28px 20px 60px;}
-  .page-head{margin-bottom:20px;}
-  .page-head .eyebrow{
-    font-family:var(--mono); font-size:11px; letter-spacing:1.5px;
-    color:var(--accent); text-transform:uppercase; margin-bottom:6px;
+  .module-body{padding:9px 10px 10px;}
+  .module-body .card{
+    background:transparent; border:none; border-radius:0;
+    padding:0; margin-bottom:0;
   }
-  .page-head h1{font-size:21px;margin:0 0 6px;font-weight:700;}
-  .page-head p{margin:0;color:var(--text-dim);font-size:13px;line-height:1.6;max-width:640px;}
 
   .card{
     background:var(--panel);
     border:1px solid var(--line);
-    border-radius:10px;
-    padding:18px 20px 20px;
-    margin-bottom:16px;
+    border-radius:8px;
+    padding:9px 10px 10px;
+    margin-bottom:8px;
   }
   .card h2{
-    font-size:12px; text-transform:uppercase; letter-spacing:1px;
-    color:var(--text-dim); margin:0 0 14px;
-    display:flex; align-items:center; gap:8px;
+    font-size:9.5px; text-transform:uppercase; letter-spacing:.6px;
+    color:var(--text-dim); margin:0 0 8px;
+    display:flex; align-items:center; gap:6px;
   }
   .card h2::after{content:"";flex:1;height:1px;background:var(--line);}
 
-  .row{display:flex; gap:14px; margin-bottom:14px;}
+  .row{display:flex; gap:8px; margin-bottom:8px;}
   .row:last-child{margin-bottom:0;}
   .field{flex:1; min-width:0;}
   .field label{
-    display:block; font-size:11.5px; color:var(--text-dim);
-    margin-bottom:6px; letter-spacing:.2px;
+    display:block; font-size:9.5px; color:var(--text-dim);
+    margin-bottom:4px; letter-spacing:.1px;
   }
   .field label .hint{color:var(--danger); font-weight:600;}
 
-  .input-with-btn{display:flex; gap:8px;}
+  .input-with-btn{display:flex; gap:5px;}
   input[type=text], input[type=number], select{
     width:100%;
     background:var(--panel-2);
     border:1px solid var(--line);
     color:var(--text);
-    font-size:13px;
-    padding:9px 11px;
-    border-radius:7px;
+    font-size:11px;
+    padding:6px 8px;
+    border-radius:5px;
     font-family:var(--mono);
     outline:none;
     transition:border-color .15s ease;
   }
   select{font-family:var(--sans);appearance:none;
     background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M0 0l5 6 5-6z' fill='%238b8fa3'/></svg>");
-    background-repeat:no-repeat; background-position:right 12px center; padding-right:30px;
+    background-repeat:no-repeat; background-position:right 9px center; padding-right:24px;
   }
   input:focus, select:focus{border-color:var(--accent);}
   input[readonly]{color:var(--text-dim);}
 
   button{
-    font-family:var(--sans); cursor:pointer; border:none; border-radius:7px;
-    font-size:12.5px; font-weight:600; letter-spacing:.2px;
+    font-family:var(--sans); cursor:pointer; border:none; border-radius:5px;
+    font-size:10.5px; font-weight:600; letter-spacing:.1px;
   }
   .btn-browse{
-    background:#2a2e39; color:var(--text); padding:0 16px;
+    background:#2a2e39; color:var(--text); padding:0 10px;
     border:1px solid var(--line); white-space:nowrap;
   }
   .btn-browse:hover{background:#333846;}
   .btn-primary{
     background:linear-gradient(180deg,var(--accent),#c9781f);
-    color:#1a1206; padding:11px 22px; font-size:13px;
+    color:#1a1206; padding:7px 14px; font-size:11px;
   }
   .btn-primary:hover{filter:brightness(1.08);}
   .btn-primary:disabled{opacity:.4; cursor:not-allowed; filter:none;}
   .btn-secondary{
     background:transparent; border:1px solid var(--line); color:var(--text-dim);
-    padding:11px 16px;
+    padding:7px 10px;
   }
   .btn-secondary:hover{color:var(--text); border-color:#454a5a;}
 
   .adv-toggle{
-    font-size:11.5px; color:var(--text-dim); cursor:pointer; user-select:none;
-    display:flex; align-items:center; gap:6px; margin-top:2px;
+    font-size:9.5px; color:var(--text-dim); cursor:pointer; user-select:none;
+    display:flex; align-items:center; gap:4px; margin-top:1px;
   }
   .adv-toggle:hover{color:var(--text);}
-  .adv-toggle .chev{transition:transform .15s ease; font-size:9px;}
+  .adv-toggle .chev{transition:transform .15s ease; font-size:7px;}
   .adv-toggle.open .chev{transform:rotate(90deg);}
-  .adv-body{display:none; margin-top:14px; padding-top:14px; border-top:1px dashed var(--line);}
+  .adv-body{display:none; margin-top:8px; padding-top:8px; border-top:1px dashed var(--line);}
   .adv-body.show{display:block;}
-  .field .desc{font-size:11px;color:#666b7d;margin-top:6px;line-height:1.5;}
+  .field .desc{font-size:9px;color:#666b7d;margin-top:4px;line-height:1.35;}
 
-  .status-row{display:flex; gap:12px; align-items:stretch;}
+  .mode-switch{
+    display:flex; width:fit-content;
+    border:1px solid var(--line); border-radius:6px; overflow:hidden;
+  }
+  .mode-btn{
+    padding:6px 13px; font-size:11px; color:var(--text-dim);
+    background:var(--panel-2); cursor:pointer; user-select:none;
+    transition:background .15s ease, color .15s ease;
+  }
+  .mode-btn:not(:last-child){border-right:1px solid var(--line);}
+  .mode-btn:hover:not(.active){color:var(--text); background:#262a35;}
+  .mode-btn.active{background:var(--accent); color:#1a1206; font-weight:700;}
+  .card > .mode-switch:first-child{margin-bottom:10px;}
+
+  .status-row{display:flex; gap:6px; align-items:stretch;}
   .status-box{
     flex:1; background:var(--panel-2); border:1px solid var(--line);
-    border-radius:7px; padding:10px 13px; font-family:var(--mono);
-    font-size:12.5px; color:var(--text-dim); display:flex; align-items:center;
+    border-radius:5px; padding:6px 8px; font-family:var(--mono);
+    font-size:10.5px; color:var(--text-dim); display:flex; align-items:center;
     min-width:0;
   }
   .status-box.busy{color:var(--accent);}
   .status-box.done{color:var(--ok);}
   .status-box.err{color:var(--danger);}
   .progress-shell{
-    margin-top:12px; height:8px; border-radius:100px; background:var(--panel-2);
+    margin-top:7px; height:5px; border-radius:100px; background:var(--panel-2);
     border:1px solid var(--line); overflow:hidden;
   }
   .progress-fill{
@@ -181,14 +182,14 @@
     transition:width .2s ease;
   }
   .progress-label{
-    display:flex; justify-content:space-between; margin-top:7px;
-    font-family:var(--mono); font-size:10.5px; color:var(--text-dim);
+    display:flex; justify-content:space-between; margin-top:5px;
+    font-family:var(--mono); font-size:9px; color:var(--text-dim);
   }
 
   .log{
-    margin-top:14px; max-height:150px; overflow-y:auto;
-    background:#101218; border:1px solid var(--line); border-radius:7px;
-    padding:10px 12px; font-family:var(--mono); font-size:11px; line-height:1.8;
+    margin-top:8px; max-height:100px; overflow-y:auto;
+    background:#101218; border:1px solid var(--line); border-radius:5px;
+    padding:6px 8px; font-family:var(--mono); font-size:9.5px; line-height:1.6;
     color:#8b8fa3; display:none;
   }
   .log.show{display:block;}
@@ -197,11 +198,11 @@
   .log .l-err{color:var(--danger);}
 
   .thumbs{
-    display:grid; grid-template-columns:repeat(auto-fill,minmax(74px,1fr));
-    gap:8px; margin-top:14px;
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(46px,1fr));
+    gap:5px; margin-top:8px;
   }
   .thumb{
-    aspect-ratio:3/4; border-radius:6px; overflow:hidden;
+    aspect-ratio:3/4; border-radius:4px; overflow:hidden;
     border:1px solid var(--line); background:var(--panel-2);
     position:relative;
   }
@@ -209,13 +210,13 @@
   .thumb .n{
     position:absolute; bottom:0; left:0; right:0;
     background:linear-gradient(0deg,#000c,transparent);
-    font-family:var(--mono); font-size:9.5px; color:#fff;
-    padding:3px 5px;
+    font-family:var(--mono); font-size:7.5px; color:#fff;
+    padding:2px 3px;
   }
 
   .footer-note{
-    font-size:11px; color:#565a68; margin-top:18px; line-height:1.7;
-    display:flex; gap:8px;
+    font-size:9px; color:#565a68; margin-top:10px; line-height:1.5;
+    display:flex; gap:5px;
   }
   .footer-note .ic{color:var(--accent);}
 
@@ -228,25 +229,7 @@
 </head>
 <body>
 
-<div class="toolbar">
-  <div class="brand">
-    <!-- Đã bỏ biểu tượng W, đổi tên thành WebTool với hai màu khác nhau -->
-    <span class="name">Web<b>Tool</b></span>
-  </div>
-  <div class="tool-tabs">
-    <div class="tool-tab active" data-module="cut"><span class="dot"></span>Cắt & Ghép Ảnh</div>
-    <div class="tool-tab" data-module="rename"><span class="dot"></span>Đổi Tên File</div>
-    <div class="tool-tab" data-module="logo"><span class="dot"></span>Gắn Logo</div>
-    <div class="tool-tab disabled"><span class="dot"></span>Tăng chất lượng ảnh<span class="soon">sắp có</span></div>
-  </div>
-</div>
-
 <div class="wrap">
-
-  <div class="page-head" id="pageHead">
-    <div class="eyebrow">Module 01 · Cắt & Ghép Ảnh</div>
-    <h1>Ghép toàn bộ chương, cắt lại theo chiều cao an toàn</h1>
-  </div>
 
   <!-- CARD VÀO/RA DÙNG CHUNG -->
   <div class="card">
@@ -273,9 +256,21 @@
     <input type="file" id="inputFolderFallback" webkitdirectory directory multiple>
   </div>
 
+  <!-- KHUNG NHÓM: nút chuyển chức năng + khung cài đặt tương ứng, chung 1 viền -->
+  <div class="module-frame">
+    <div class="module-tabs">
+      <div class="tool-tab active" data-module="cut"><span class="dot"></span>Cắt & Ghép Ảnh</div>
+      <div class="tool-tab" data-module="rename"><span class="dot"></span>Đổi Tên File</div>
+      <div class="tool-tab" data-module="logo"><span class="dot"></span>Gắn Logo</div>
+    </div>
+    <div class="module-body">
+
   <!-- CARD CẮT ẢNH -->
   <div class="card" id="cutSettingsCard">
-    <h2>Cài Đặt Chung</h2>
+    <div class="mode-switch" id="cutModeSwitch">
+      <div class="mode-btn active" data-mode="auto">Tự Động</div>
+      <div class="mode-btn" data-mode="manual">Cố Định</div>
+    </div>
     <div class="row">
       <div class="field">
         <label>Định Dạng File Xuất</label>
@@ -292,7 +287,7 @@
     </div>
     <div class="row">
       <div class="field">
-        <label>Chiều Cao Xuất (gần đúng, px)</label>
+        <label>Chiều Cao Xuất <span id="heightModeHint">(gần đúng, px)</span></label>
         <input type="number" id="roughHeight" min="500" step="100" value="13000">
       </div>
       <div class="field">
@@ -404,13 +399,11 @@
         <input type="number" id="logoPadY" min="0" step="1" value="10">
       </div>
     </div>
-    <div class="row">
-      <div class="field">
-        <label>Chất lượng ảnh xuất (nếu có lossy)</label>
-        <input type="number" id="logoQuality" min="1" max="100" value="92">
-      </div>
+  </div>
+
     </div>
   </div>
+  <!-- /KHUNG NHÓM -->
 
   <!-- STATUS -->
   <div class="card">
@@ -442,6 +435,8 @@
     inputFolderFallback: $('inputFolderFallback'),
     outputType: $('outputType'),
     quality: $('quality'),
+    cutModeSwitch: $('cutModeSwitch'),
+    heightModeHint: $('heightModeHint'),
     roughHeight: $('roughHeight'),
     widthMode: $('widthMode'),
     searchWindow: $('searchWindow'),
@@ -464,7 +459,6 @@
     renameExtMode: $('renameExtMode'),
     renameCustomExtField: $('renameCustomExtField'),
     renameCustomExt: $('renameCustomExt'),
-    pageHead: $('pageHead'),
     logoPathDisplay: $('logoPathDisplay'),
     btnBrowseLogo: $('btnBrowseLogo'),
     logoFileInput: $('logoFileInput'),
@@ -474,7 +468,6 @@
     logoAlignV: $('logoAlignV'),
     logoPadX: $('logoPadX'),
     logoPadY: $('logoPadY'),
-    logoQuality: $('logoQuality'),
   };
 
   let currentModule = 'cut';
@@ -485,6 +478,140 @@
   let outputDirPath = null;          // Tauri: tuyệt đối
   let outputMode = isTauri ? null : (supportsFS ? null : 'zip');
   let logoFile = null;
+  let cutHeightMode = 'auto'; // 'auto' = dò điểm cắt an toàn, 'manual' = chiều cao cố định
+
+  // ==================== LƯU / KHÔI PHỤC CÀI ĐẶT ====================
+  // Tauri (đóng gói app) -> lưu vào file JSON trong thư mục dữ liệu ứng dụng.
+  // Web (chạy trên trình duyệt) -> lưu vào localStorage.
+  const SETTINGS_KEY = 'webtool_settings_v1';
+  const SETTINGS_FILE_NAME = 'webtool-settings.json';
+
+  function collectSettings() {
+    return {
+      currentModule,
+      inputDirPath,
+      outputDirPath,
+      cut: {
+        outputType: els.outputType.value,
+        quality: els.quality.value,
+        heightMode: cutHeightMode,
+        roughHeight: els.roughHeight.value,
+        widthMode: els.widthMode.value,
+        searchWindow: els.searchWindow.value,
+        sensitivity: els.sensitivity.value,
+      },
+      rename: {
+        seqEnabled: els.renameSeqEnabled.checked,
+        padLength: els.renamePadLength.value,
+        extMode: els.renameExtMode.value,
+        customExt: els.renameCustomExt.value,
+      },
+      logo: {
+        height: els.logoHeight.value,
+        opacity: els.logoOpacity.value,
+        alignH: els.logoAlignH.value,
+        alignV: els.logoAlignV.value,
+        padX: els.logoPadX.value,
+        padY: els.logoPadY.value,
+      },
+    };
+  }
+
+  function applySettings(data) {
+    if (!data) return;
+    if (data.cut) {
+      if (data.cut.outputType) els.outputType.value = data.cut.outputType;
+      if (data.cut.quality != null) els.quality.value = data.cut.quality;
+      if (data.cut.heightMode) setCutHeightMode(data.cut.heightMode, true);
+      if (data.cut.roughHeight != null) els.roughHeight.value = data.cut.roughHeight;
+      if (data.cut.widthMode) els.widthMode.value = data.cut.widthMode;
+      if (data.cut.searchWindow != null) els.searchWindow.value = data.cut.searchWindow;
+      if (data.cut.sensitivity != null) els.sensitivity.value = data.cut.sensitivity;
+    }
+    if (data.rename) {
+      if (data.rename.seqEnabled != null) els.renameSeqEnabled.checked = data.rename.seqEnabled;
+      if (data.rename.padLength != null) els.renamePadLength.value = data.rename.padLength;
+      if (data.rename.extMode) {
+        els.renameExtMode.value = data.rename.extMode;
+        els.renameCustomExtField.style.display = data.rename.extMode === 'custom' ? '' : 'none';
+      }
+      if (data.rename.customExt != null) els.renameCustomExt.value = data.rename.customExt;
+    }
+    if (data.logo) {
+      if (data.logo.height != null) els.logoHeight.value = data.logo.height;
+      if (data.logo.opacity != null) els.logoOpacity.value = data.logo.opacity;
+      if (data.logo.alignH) els.logoAlignH.value = data.logo.alignH;
+      if (data.logo.alignV) els.logoAlignV.value = data.logo.alignV;
+      if (data.logo.padX != null) els.logoPadX.value = data.logo.padX;
+      if (data.logo.padY != null) els.logoPadY.value = data.logo.padY;
+    }
+    // Đường dẫn ra: khôi phục được ngay vì Tauri lưu path tuyệt đối.
+    if (data.outputDirPath) {
+      outputDirPath = data.outputDirPath;
+      els.outputPathDisplay.value = outputDirPath;
+      if (isTauri) outputMode = 'tauri';
+    }
+    // Đường dẫn vào: hiển thị lại cho người dùng biết, việc nạp ảnh thật
+    // sẽ do init() xử lý riêng (chỉ tự nạp lại được khi chạy Tauri).
+    if (data.inputDirPath) {
+      inputDirPath = data.inputDirPath;
+      els.inputPathDisplay.value = isTauri ? inputDirPath.split(/[/\\]/).pop() : inputDirPath;
+    }
+  }
+
+  async function getTauriSettingsFilePath() {
+    const dir = await window.__TAURI__.path.appDataDir();
+    await window.__TAURI__.fs.createDir(dir, { recursive: true });
+    return await window.__TAURI__.path.join(dir, SETTINGS_FILE_NAME);
+  }
+
+  async function saveSettings() {
+    const data = collectSettings();
+    if (isTauri) {
+      try {
+        if (!window.__TAURI__.fs || !window.__TAURI__.path) return;
+        const filePath = await getTauriSettingsFilePath();
+        const bytes = new TextEncoder().encode(JSON.stringify(data, null, 2));
+        await window.__TAURI__.fs.writeFile(filePath, bytes);
+      } catch (e) {
+        console.warn('Không lưu được cài đặt (Tauri):', e);
+      }
+    } else {
+      try {
+        localStorage.setItem(SETTINGS_KEY, JSON.stringify(data));
+      } catch (e) {
+        console.warn('Không lưu được cài đặt (localStorage):', e);
+      }
+    }
+  }
+
+  async function loadSettings() {
+    if (isTauri) {
+      try {
+        if (!window.__TAURI__.fs || !window.__TAURI__.path) return null;
+        const filePath = await getTauriSettingsFilePath();
+        const bytes = await window.__TAURI__.fs.readFile(filePath);
+        const text = new TextDecoder().decode(bytes);
+        return JSON.parse(text);
+      } catch (e) {
+        return null; // chưa có file cài đặt trước đó
+      }
+    } else {
+      try {
+        const raw = localStorage.getItem(SETTINGS_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+  }
+
+  // Tự lưu mỗi khi người dùng đổi 1 thông số cài đặt
+  [
+    els.outputType, els.quality, els.roughHeight, els.widthMode, els.searchWindow, els.sensitivity,
+    els.renameSeqEnabled, els.renamePadLength, els.renameExtMode, els.renameCustomExt,
+    els.logoHeight, els.logoOpacity, els.logoAlignH, els.logoAlignV, els.logoPadX, els.logoPadY,
+  ].forEach(el => el.addEventListener('change', saveSettings));
 
   // ---- UI MODE ----
   if (isTauri) {
@@ -498,6 +625,29 @@
   els.advToggle.addEventListener('click', () => {
     els.advToggle.classList.toggle('open');
     els.advBody.classList.toggle('show');
+  });
+
+  // ---- Chế độ cắt: Tự Động (dò điểm cắt an toàn) / Cố Định (chiều cao cố định) ----
+  function setCutHeightMode(mode, skipSave) {
+    cutHeightMode = mode;
+    els.cutModeSwitch.querySelectorAll('.mode-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.mode === mode);
+    });
+    if (mode === 'manual') {
+      els.heightModeHint.textContent = '(cố định, px)';
+      els.advToggle.style.display = 'none';
+      els.advBody.classList.remove('show');
+      els.advBody.style.display = 'none';
+      els.advToggle.classList.remove('open');
+    } else {
+      els.heightModeHint.textContent = '(gần đúng, px)';
+      els.advToggle.style.display = '';
+      els.advBody.style.display = '';
+    }
+    if (!skipSave) saveSettings();
+  }
+  els.cutModeSwitch.querySelectorAll('.mode-btn').forEach(btn => {
+    btn.addEventListener('click', () => setCutHeightMode(btn.dataset.mode));
   });
 
   // ---- Tab switching ----
@@ -520,19 +670,12 @@
     els.renameSettingsCard.style.display = module === 'rename' ? '' : 'none';
     els.logoSettingsCard.style.display = module === 'logo' ? '' : 'none';
 
-    if (module === 'cut') {
-      els.pageHead.innerHTML = `<div class="eyebrow">Module 01 · Cắt & Ghép Ảnh</div><h1>Ghép toàn bộ chương, cắt lại theo chiều cao an toàn</h1>`;
-    } else if (module === 'rename') {
-      els.pageHead.innerHTML = `<div class="eyebrow">Module 02 · Đổi Tên File</div><h1>Đổi tên hàng loạt ảnh theo thứ tự</h1>`;
-    } else if (module === 'logo') {
-      els.pageHead.innerHTML = `<div class="eyebrow">Module 03 · Gắn Logo</div><h1>Thêm logo vào toàn bộ ảnh</h1>`;
-    }
-
     els.thumbs.innerHTML = '';
     els.log.innerHTML = '';
     els.log.classList.remove('show');
     setStatus('Chờ lệnh…');
     updateStartEnabled();
+    saveSettings();
   }
 
   // Logo file selection
@@ -596,6 +739,24 @@
   const IMG_RE = /\.(png|jpe?g|webp)$/i;
 
   // ---- INPUT SELECTION ----
+  async function readTauriImageDir(dirPath) {
+    const entries = await window.__TAURI__.fs.readDir(dirPath);
+    const items = [];
+    for (const entry of entries) {
+      if (entry.kind === 'file' && IMG_RE.test(entry.name)) {
+        const fullPath = await window.__TAURI__.path.join(dirPath, entry.name);
+        const data = await window.__TAURI__.fs.readFile(fullPath);
+        const ext = entry.name.split('.').pop().toLowerCase();
+        const mime = ext === 'jpg' ? 'image/jpeg' : (ext === 'webp' ? 'image/webp' : 'image/png');
+        const blob = new Blob([data], { type: mime });
+        const file = new File([blob], entry.name);
+        items.push({ name: entry.name, file, path: fullPath });
+      }
+    }
+    items.sort((a, b) => naturalCompare(a.name, b.name));
+    return items;
+  }
+
   els.btnBrowseInput.addEventListener('click', async () => {
     if (isTauri) {
       if (!window.__TAURI__.dialog || !window.__TAURI__.fs || !window.__TAURI__.path) {
@@ -607,23 +768,9 @@
         if (dir) {
           inputDirPath = Array.isArray(dir) ? dir[0] : dir;
           els.inputPathDisplay.value = inputDirPath.split(/[/\\]/).pop();
-          const entries = await window.__TAURI__.fs.readDir(inputDirPath);
-          const items = [];
-          for (const entry of entries) {
-            if (entry.kind === 'file' && IMG_RE.test(entry.name)) {
-              const fullPath = await window.__TAURI__.path.join(inputDirPath, entry.name);
-              // Load file content ngay
-              const data = await window.__TAURI__.fs.readFile(fullPath);
-              const ext = entry.name.split('.').pop().toLowerCase();
-              const mime = ext === 'jpg' ? 'image/jpeg' : (ext === 'webp' ? 'image/webp' : 'image/png');
-              const blob = new Blob([data], { type: mime });
-              const file = new File([blob], entry.name);
-              items.push({ name: entry.name, file, path: fullPath });
-            }
-          }
-          items.sort((a, b) => naturalCompare(a.name, b.name));
-          inputFiles = items;
+          inputFiles = await readTauriImageDir(inputDirPath);
           afterInputLoaded();
+          saveSettings();
         }
       } catch (e) {
         log('Không chọn được thư mục: ' + e.message, 'l-err');
@@ -642,6 +789,7 @@
         items.sort((a, b) => naturalCompare(a.name, b.name));
         inputFiles = items;
         afterInputLoaded();
+        saveSettings();
       } catch (e) {
         if (e.name !== 'AbortError') log('Không mở được thư mục: ' + e.message, 'l-err');
       }
@@ -658,6 +806,7 @@
     inputDirPath = folder;
     els.inputPathDisplay.value = folder;
     afterInputLoaded();
+    saveSettings();
   });
 
   function afterInputLoaded() {
@@ -691,6 +840,7 @@
       outputMode = 'zip';
     }
     updateStartEnabled();
+    saveSettings();
   });
 
   function updateStartEnabled() {
@@ -873,17 +1023,27 @@
         }
       }
 
-      setStatus('Đang dò điểm cắt an toàn…', 'busy');
       const boundaries = [0];
-      let pos = 0;
-      let guard = 0;
-      while (totalHeight - pos > roughHeight * 1.5 && guard < 5000) {
-        guard++;
-        const ideal = pos + roughHeight;
-        const cut = await findSafeCut(ideal);
-        boundaries.push(cut);
-        pos = cut;
-        setProgress(25 + (pos / totalHeight) * 25, `dò: ${Math.round(pos)}/${totalHeight}px`);
+      if (cutHeightMode === 'manual') {
+        setStatus('Đang cắt theo chiều cao cố định…', 'busy');
+        let pos = 0;
+        while (totalHeight - pos > roughHeight) {
+          pos += roughHeight;
+          boundaries.push(pos);
+          setProgress(25 + (pos / totalHeight) * 25, `${Math.round(pos)}/${totalHeight}px`);
+        }
+      } else {
+        setStatus('Đang dò điểm cắt an toàn…', 'busy');
+        let pos = 0;
+        let guard = 0;
+        while (totalHeight - pos > roughHeight * 1.5 && guard < 5000) {
+          guard++;
+          const ideal = pos + roughHeight;
+          const cut = await findSafeCut(ideal);
+          boundaries.push(cut);
+          pos = cut;
+          setProgress(25 + (pos / totalHeight) * 25, `dò: ${Math.round(pos)}/${totalHeight}px`);
+        }
       }
       boundaries.push(totalHeight);
       const sliceCount = boundaries.length - 1;
@@ -1095,7 +1255,7 @@
     const alignV = els.logoAlignV.value;
     const padX = Math.max(0, parseInt(els.logoPadX.value, 10) || 0);
     const padY = Math.max(0, parseInt(els.logoPadY.value, 10) || 0);
-    const quality = Math.min(100, Math.max(1, parseInt(els.logoQuality.value, 10) || 92)) / 100;
+    const quality = 1.0; // Luôn xuất chất lượng 100%
 
     try {
       setStatus('Đang tải logo…', 'busy');
@@ -1212,9 +1372,31 @@
     return jszipLoading;
   }
 
-  // Khởi động
-  switchModule('cut');
-  updateStartEnabled();
+  // Khởi động: nạp cài đặt đã lưu trước (nếu có) rồi mới bật giao diện
+  async function init() {
+    const saved = await loadSettings();
+    applySettings(saved);
+
+    const startModule = (saved && saved.currentModule) || 'cut';
+    switchModule(startModule);
+
+    // Chỉ Tauri mới có đường dẫn tuyệt đối nên có thể tự nạp lại ảnh.
+    // Trên web, trình duyệt không cho lưu quyền truy cập thư mục qua
+    // localStorage vì lý do bảo mật — người dùng cần bấm "Duyệt" lại.
+    if (isTauri && inputDirPath && window.__TAURI__.fs && window.__TAURI__.path) {
+      try {
+        inputFiles = await readTauriImageDir(inputDirPath);
+        afterInputLoaded();
+      } catch (e) {
+        log(`Không tự nạp lại được thư mục cũ (${inputDirPath}): ${e.message}`, 'l-warn');
+      }
+    } else if (!isTauri && inputDirPath) {
+      log(`Đã khôi phục cài đặt trước đó. Vui lòng bấm "Duyệt" để chọn lại thư mục ảnh: ${inputDirPath}`, 'l-warn');
+    }
+
+    updateStartEnabled();
+  }
+  init();
 })();
 </script>
 
