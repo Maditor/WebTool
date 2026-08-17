@@ -13,6 +13,7 @@
     outputType: $('outputType'),
     quality: $('quality'),
     cutModeSwitch: $('cutModeSwitch'),
+    heightModeLabel: $('heightModeLabel'),
     heightModeHint: $('heightModeHint'),
     roughHeight: $('roughHeight'),
     widthMode: $('widthMode'),
@@ -201,18 +202,39 @@
 
   // ---- Chế độ cắt: Tự Động (dò điểm cắt an toàn) / Cố Định (chiều cao cố định) ----
   function setCutHeightMode(mode, skipSave) {
+    const prevMode = cutHeightMode;
     cutHeightMode = mode;
     els.cutModeSwitch.querySelectorAll('.mode-btn').forEach(b => {
       b.classList.toggle('active', b.dataset.mode === mode);
     });
     if (mode === 'manual') {
+      els.heightModeLabel.firstChild.textContent = 'Chiều Cao Xuất ';
+      els.heightModeHint.style.display = '';
       els.heightModeHint.textContent = '(cố định, px)';
+      els.roughHeight.min = 500;
+      els.roughHeight.step = 100;
+      if (prevMode === 'divide') els.roughHeight.value = 13000;
+      els.advToggle.style.display = 'none';
+      els.advBody.classList.remove('show');
+      els.advBody.style.display = 'none';
+      els.advToggle.classList.remove('open');
+    } else if (mode === 'divide') {
+      els.heightModeLabel.firstChild.textContent = 'Nhập Số Ảnh ';
+      els.heightModeHint.style.display = 'none';
+      els.roughHeight.min = 2;
+      els.roughHeight.step = 1;
+      if (prevMode !== 'divide') els.roughHeight.value = 2;
       els.advToggle.style.display = 'none';
       els.advBody.classList.remove('show');
       els.advBody.style.display = 'none';
       els.advToggle.classList.remove('open');
     } else {
+      els.heightModeLabel.firstChild.textContent = 'Chiều Cao Xuất ';
+      els.heightModeHint.style.display = '';
       els.heightModeHint.textContent = '(gần đúng, px)';
+      els.roughHeight.min = 500;
+      els.roughHeight.step = 100;
+      if (prevMode === 'divide') els.roughHeight.value = 13000;
       els.advToggle.style.display = '';
       els.advBody.style.display = '';
     }
@@ -454,7 +476,12 @@
     els.btnStart.disabled = true;
     const outputType = els.outputType.value;
     const quality = Math.min(100, Math.max(1, parseInt(els.quality.value, 10) || 100)) / 100;
-    const roughHeight = Math.max(500, parseInt(els.roughHeight.value, 10) || 13000);
+    const roughHeight = cutHeightMode === 'divide'
+      ? 0
+      : Math.max(500, parseInt(els.roughHeight.value, 10) || 13000);
+    const numSlices = cutHeightMode === 'divide'
+      ? Math.max(2, parseInt(els.roughHeight.value, 10) || 2)
+      : 0;
     const widthMode = els.widthMode.value;
     const searchWindow = Math.max(30, parseInt(els.searchWindow.value, 10) || 1000);
     const sensitivity = Math.max(0, parseInt(els.sensitivity.value, 10) || 5);
@@ -594,6 +621,13 @@
           pos += roughHeight;
           boundaries.push(pos);
           setProgress(25 + (pos / totalHeight) * 25, `${Math.round(pos)}/${totalHeight}px`);
+        }
+      } else if (cutHeightMode === 'divide') {
+        setStatus('Đang chia đều ảnh…', 'busy');
+        for (let i = 1; i < numSlices; i++) {
+          const pos = Math.round((totalHeight * i) / numSlices);
+          boundaries.push(pos);
+          setProgress(25 + (i / numSlices) * 25, `${i}/${numSlices} phần`);
         }
       } else {
         setStatus('Đang dò điểm cắt an toàn…', 'busy');
