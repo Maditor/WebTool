@@ -10,26 +10,32 @@
 
 <div class="wrap">
 
-  <!-- CARD VÀO/RA DÙNG CHUNG -->
-  <div class="card">
-    <h2>Cài Đặt Vào / Ra</h2>
-    <div class="row">
-      <div class="field">
-        <label>Đường Dẫn Vào (thư mục chứa ảnh)</label>
-        <div class="input-with-btn">
-          <input type="text" id="inputPathDisplay" readonly placeholder="Chưa chọn thư mục...">
-          <button class="btn-browse" id="btnBrowseInput">Duyệt</button>
+  <!-- CARD VÀO/RA + TRẠNG THÁI (2 CỘT) -->
+  <div class="card io-status-card">
+    <div class="io-status-grid">
+      <div class="io-col">
+        <div class="field">
+          <label>Đường Dẫn Vào (thư mục chứa ảnh)</label>
+          <div class="input-with-btn">
+            <input type="text" id="inputPathDisplay" readonly placeholder="Chưa chọn thư mục...">
+            <button class="btn-browse" id="btnBrowseInput">Duyệt</button>
+          </div>
+          <div class="desc" id="inputModeNote"></div>
+        </div>
+        <div class="field">
+          <label>Đường Dẫn Ra</label>
+          <div class="input-with-btn">
+            <input type="text" id="outputPathDisplay" readonly placeholder="Chưa chọn thư mục xuất...">
+            <button class="btn-browse" id="btnBrowseOutput">Duyệt</button>
+          </div>
+          <div class="desc" id="outputModeNote"></div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="field">
-        <label>Đường Dẫn Ra</label>
-        <div class="input-with-btn">
-          <input type="text" id="outputPathDisplay" readonly placeholder="Chưa chọn thư mục xuất...">
-          <button class="btn-browse" id="btnBrowseOutput">Duyệt</button>
-        </div>
-        <div class="desc" id="outputModeNote"></div>
+      <div class="io-divider"></div>
+      <div class="status-col">
+        <label>Trạng Thái</label>
+        <div class="status-box" id="statusBox">Chờ lệnh…</div>
+        <button class="btn-primary" id="btnStart" disabled>Bắt Đầu Xử Lý</button>
       </div>
     </div>
     <input type="file" id="inputFolderFallback" webkitdirectory directory multiple>
@@ -184,15 +190,6 @@
     </div>
   </div>
   <!-- /KHUNG NHÓM -->
-
-  <!-- STATUS -->
-  <div class="card">
-    <h2>Trạng Thái Hiện Tại</h2>
-    <div class="status-row">
-      <div class="status-box" id="statusBox">Chờ lệnh…</div>
-      <button class="btn-primary" id="btnStart" disabled>Bắt Đầu Xử Lý</button>
-    </div>
-  </div>
 
 </div>
 
