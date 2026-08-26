@@ -2,9 +2,8 @@
 
 Công cụ xử lý ảnh chạy hoàn toàn phía client (không cần server), dùng để hỗ trợ dựng webtoon/truyện tranh: ghép — cắt lại ảnh theo chiều cao, đổi tên file hàng loạt, và gắn logo lên toàn bộ ảnh.
 
-Chạy được ở 2 dạng:
 - **Trên trình duyệt**: mở 'https://maditor.github.io/WebTool/'
-- **Portable**: chạy như app desktop, thao tác trực tiếp với thư mục trên máy.
+
 
 ## Các chức năng
 
@@ -25,15 +24,13 @@ Chèn 1 logo/watermark lên toàn bộ ảnh trong thư mục, tùy chỉnh kíc
 
 ## Chọn thư mục vào / ra
 
-- **Portable**: chọn thẳng thư mục thật trên máy, kết quả ghi trực tiếp vào thư mục xuất (hoặc thư mục con tự tạo, tùy chức năng).
 - **Chạy trên trình duyệt hỗ trợ File System Access API** (Chrome/Edge): có thể chọn thư mục xuất và ghi trực tiếp, không cần tải về.
-- **Trình duyệt không hỗ trợ**: kết quả sẽ được đóng gói và tải về dưới dạng file `.zip`.
 
 ## Lưu cài đặt
 
 Mọi thông số bạn chỉnh (định dạng, chất lượng, chế độ cắt, cài đặt đổi tên, cài đặt logo...) và đường dẫn thư mục đều được tự động lưu lại:
 
-- **Portable**: lưu vào file JSON trong thư mục dữ liệu ứng dụng, kèm tự động nạp lại danh sách ảnh của thư mục đã chọn lần trước.
+
 - **Bản web**: lưu vào `localStorage` của trình duyệt. Do giới hạn bảo mật, trình duyệt không lưu được quyền truy cập thư mục — bạn cần bấm "Duyệt" chọn lại thư mục ảnh mỗi khi mở lại, các thông số khác vẫn được giữ nguyên.
 
 ## Yêu cầu
